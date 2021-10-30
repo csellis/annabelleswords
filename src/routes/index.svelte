@@ -4,56 +4,65 @@
 
 <script>
 	import Counter from '$lib/Counter.svelte';
+
+	let words = [
+		'what',
+		'that',
+		'there',
+		'where',
+		'know',
+		'now',
+		'night',
+		'knight',
+		'not',
+		'knot',
+		'could',
+		'should',
+		'would',
+		'thought',
+		'through'
+	];
+	let current = Math.floor(Math.random() * words.length);
+
+	function selectRandom() {
+		let random = Math.floor(Math.random() * words.length);
+		if (random === current) {
+			selectRandom();
+		} else {
+			current = random;
+		}
+	}
 </script>
 
 <svelte:head>
-	<title>Home</title>
+	<title>Annabelle's Flash Cards</title>
 </svelte:head>
 
-<section>
-	<h1>
-		<div class="welcome">
-			<picture>
-				<source srcset="svelte-welcome.webp" type="image/webp" />
-				<img src="svelte-welcome.png" alt="Welcome" />
-			</picture>
-		</div>
-
-		to your new<br />SvelteKit app
-	</h1>
-
+<main>
+	<h1>Annabelle's Flash Cards</h1>
 	<h2>
-		try editing <strong>src/routes/index.svelte</strong>
+		{words[current]}
 	</h2>
 
-	<Counter />
-</section>
+	<button on:click={selectRandom}>Random</button>
+</main>
 
 <style>
-	section {
+	main {
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		flex: 1;
+		height: 100%;
+		flex: 1 100%;
 	}
 
 	h1 {
-		width: 100%;
+		font-size: 2.5rem;
 	}
-
-	.welcome {
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
-	}
-
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
+	h2 {
+		display: grid;
+		align-self: center;
+		font-size: 2rem;
+		font-weight: 700;
+		flex: 1 100%;
 	}
 </style>
