@@ -20,7 +20,14 @@
 		'should',
 		'would',
 		'thought',
-		'through'
+		'through',
+		'they',
+		'them',
+		'when',
+		'then',
+		'grand',
+		'great',
+		'down'
 	];
 	let current = Math.floor(Math.random() * words.length);
 
